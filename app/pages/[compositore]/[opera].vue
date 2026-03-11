@@ -2,7 +2,7 @@
   <div class="max-w-3xl mx-auto px-4 py-12">
     <!-- Back -->
     <NuxtLink
-      :to="`/${slug.compositore}`"
+      :to="localePath(`/${slug.compositore}`)"
       class="font-cinzel text-xs text-gold/50 tracking-widest hover:text-gold transition-colors"
     >
       ← {{ opera?.compositore?.toUpperCase() }}
@@ -31,19 +31,19 @@
 
       <!-- Personaggi -->
       <OperaCharacters
-        v-if="opera.meta.personaggi"
-        :personaggi="opera.meta.personaggi"
+        v-if="opera.personaggi"
+        :personaggi="opera.personaggi"
         class="mb-10"
       />
 
       <!-- Atti -->
-      <OperaActs v-if="opera.meta.atti" :atti="opera.meta.atti" class="mb-4" />
+      <OperaActs v-if="opera.atti" :atti="opera.atti" class="mb-4" />
 
       <!-- Aria -->
-      <AriaHighlight v-if="opera.meta.aria" :aria="opera.meta.aria" />
+      <AriaHighlight v-if="opera.aria" :aria="opera.aria" />
 
       <!-- Finale -->
-      <OperaFinale v-if="opera.meta.finale" :testo="opera.meta.finale" />
+      <OperaFinale v-if="opera.finale" :testo="opera.finale" />
     </div>
   </div>
 </template>
@@ -51,6 +51,7 @@
 <script setup>
 const route = useRoute();
 const { locale } = useI18n();
+const localePath = useLocalePath();
 const slug = {
   compositore: route.params.compositore,
   opera: route.params.opera,
