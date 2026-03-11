@@ -1,20 +1,62 @@
 <template>
-  <header class="text-center py-8 px-4 border-b border-gold/20">
-    <NuxtLink :to="localePath('/')" class="inline-block">
-      <p class="font-cinzel text-gold/70 tracking-widest text-sm mb-1">✦ ✦ ✦</p>
+  <header
+    class="text-center px-4 relative overflow-hidden"
+    style="padding: 5rem 2rem 3rem"
+  >
+    <!-- Alone cremisi dall'alto, come nell'originale -->
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="
+        background: radial-gradient(
+          ellipse 80% 60% at 50% 0%,
+          rgba(139, 26, 26, 0.3) 0%,
+          transparent 70%
+        );
+      "
+      aria-hidden="true"
+    />
+
+    <NuxtLink :to="localePath('/')" class="inline-block relative">
+      <p
+        class="font-cinzel text-gold tracking-widest text-lg mb-3"
+        style="letter-spacing: 0.5em; opacity: 0.7"
+      >
+        ✦ ✦ ✦
+      </p>
       <h1
-        class="font-cinzel text-3xl md:text-4xl text-gold-light tracking-widest"
+        class="font-cinzel text-gold-light tracking-widest"
+        style="
+          font-size: clamp(2.5rem, 6vw, 4.5rem);
+          letter-spacing: 0.15em;
+          text-shadow: 0 0 40px rgba(201, 168, 76, 0.3);
+        "
       >
         {{ $t("site_title") }}
       </h1>
-      <p class="font-playfair italic text-cream-2/80 text-sm mt-1">
+      <p
+        class="font-playfair italic text-cream-2 mt-3"
+        style="font-size: 1.3rem; opacity: 0.8"
+      >
         {{ $t("site_subtitle") }}
       </p>
     </NuxtLink>
-    <div class="mt-4 flex items-center justify-center gap-4">
+
+    <!-- Linea dorata -->
+    <div
+      style="
+        width: 200px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+        margin: 1.5rem auto;
+      "
+    />
+
+    <!-- Nav: ricerca + lingue -->
+    <div class="flex items-center justify-center gap-4">
       <NuxtLink
         :to="localePath('/ricerca')"
         class="font-cinzel text-xs text-gold/40 tracking-widest hover:text-gold transition-colors"
+        style="letter-spacing: 0.15em"
       >
         🔍 {{ $t("search") }}
       </NuxtLink>

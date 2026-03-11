@@ -1,14 +1,42 @@
 <template>
   <div
-    class="mt-8 p-5 border border-gold/20 border-l-4 border-l-gold bg-gradient-to-r from-crimson/10 to-gold/5"
+    style="
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: linear-gradient(
+        135deg,
+        rgba(139, 26, 26, 0.15),
+        rgba(201, 168, 76, 0.05)
+      );
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-left: 3px solid #c9a84c;
+    "
   >
-    <div class="flex items-center gap-4 mb-3">
-      <span class="font-cinzel text-xs tracking-widest text-gold uppercase">
+    <!-- Section label -->
+    <div class="flex items-center gap-4" style="margin-bottom: 0.8rem">
+      <span
+        class="font-cinzel text-gold uppercase"
+        style="font-size: 0.75rem; letter-spacing: 0.4em"
+      >
         {{ $t("finale") }}
       </span>
-      <div class="flex-1 h-px bg-gradient-to-r from-gold/30 to-transparent" />
+      <div
+        style="
+          flex: 1;
+          height: 1px;
+          background: linear-gradient(
+            90deg,
+            rgba(201, 168, 76, 0.3),
+            transparent
+          );
+        "
+      />
     </div>
-    <p class="font-cormorant italic text-cream-2 leading-relaxed">
+
+    <p
+      class="font-cormorant italic"
+      style="color: #e8d9b8; font-size: 1.05rem; line-height: 1.8"
+    >
       {{ testo }}
     </p>
   </div>

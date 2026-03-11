@@ -3,54 +3,134 @@
     <NuxtLink
       :to="localePath('/')"
       class="font-cinzel text-xs text-gold/50 tracking-widest hover:text-gold transition-colors"
+      style="letter-spacing: 0.15em"
     >
       ← {{ $t("all_composers") }}
     </NuxtLink>
 
+    <!-- Composer header -->
     <div
       v-if="compositore"
-      class="text-center my-12 p-10 border border-gold/20 bg-gradient-to-br from-dark-2/80 to-dark/95 relative"
+      class="text-center relative border border-gold/20"
+      style="
+        margin: 3rem 0;
+        padding: 3rem 2rem;
+        background: linear-gradient(
+          135deg,
+          rgba(36, 26, 14, 0.8) 0%,
+          rgba(26, 18, 9, 0.95) 100%
+        );
+      "
     >
-      <div class="absolute inset-2 border border-gold/10 pointer-events-none" />
+      <!-- Bordo interno decorativo -->
       <div
-        class="font-cormorant italic text-gold/70 tracking-widest text-sm mb-2"
+        class="absolute pointer-events-none"
+        style="inset: 8px; border: 1px solid rgba(201, 168, 76, 0.1)"
+        aria-hidden="true"
+      />
+      <div
+        class="font-cormorant italic text-gold"
+        style="
+          font-size: 1rem;
+          letter-spacing: 0.3em;
+          margin-bottom: 0.5rem;
+          opacity: 0.8;
+        "
       >
         {{ compositore.years }}
       </div>
-      <h1 class="font-cinzel text-4xl md:text-5xl text-cream tracking-wide">
+      <h1
+        class="font-cinzel text-cream"
+        style="font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: 0.1em"
+      >
         {{ compositore.title }}
       </h1>
       <p
-        class="font-cormorant italic text-cream/70 max-w-xl mx-auto mt-4 text-lg leading-relaxed"
+        class="font-cormorant italic text-cream/70 mx-auto mt-6"
+        style="max-width: 600px; line-height: 1.8; font-size: 1.05rem"
       >
         {{ compositore.bio }}
       </p>
     </div>
 
-    <div class="space-y-4">
+    <!-- Lista opere -->
+    <div style="display: flex; flex-direction: column; gap: 0">
       <NuxtLink
         v-for="(opera, i) in opere"
         :key="opera.path"
         :to="localePath(`/${slug}/${opera.path.split('/').pop()}`)"
-        class="flex items-center gap-6 p-6 border border-gold/20 hover:border-gold/40 bg-dark-2/50 hover:bg-dark-2/80 transition-all duration-300 group"
+        class="group"
+        style="
+          display: flex;
+          align-items: center;
+          gap: 2rem;
+          padding: 2rem 2.5rem;
+          border: 1px solid rgba(201, 168, 76, 0.25);
+          background: linear-gradient(
+            160deg,
+            rgba(36, 26, 14, 0.6) 0%,
+            rgba(13, 10, 7, 0.9) 100%
+          );
+          margin-bottom: 4rem;
+          transition: border-color 0.3s;
+        "
+        @mouseover="
+          $event.currentTarget.style.borderColor = 'rgba(201,168,76,0.5)'
+        "
+        @mouseleave="
+          $event.currentTarget.style.borderColor = 'rgba(201,168,76,0.25)'
+        "
       >
-        <div class="font-cinzel text-3xl text-gold/15 font-bold min-w-[48px]">
+        <!-- Numero -->
+        <div
+          class="font-cinzel font-bold"
+          style="
+            font-size: 3rem;
+            color: rgba(201, 168, 76, 0.2);
+            min-width: 60px;
+            line-height: 1;
+          "
+        >
           {{ String(i + 1).padStart(2, "0") }}
         </div>
-        <div class="flex-1">
-          <div class="font-cormorant italic text-gold/60 text-sm mb-1">
-            <span v-if="slug === 'altri'">{{ opera.compositore }} -</span>
+
+        <!-- Testo -->
+        <div style="flex: 1">
+          <div
+            class="font-cormorant italic text-gold"
+            style="
+              font-size: 0.85rem;
+              letter-spacing: 0.3em;
+              opacity: 0.7;
+              margin-bottom: 0.3rem;
+            "
+          >
+            <span v-if="slug === 'altri'">{{ opera.compositore }} · </span>
             {{ opera.anno }}
           </div>
           <div
-            class="font-playfair italic text-cream text-xl group-hover:text-gold-light transition-colors"
+            class="font-playfair italic text-cream group-hover:text-gold-light transition-colors"
+            style="font-size: clamp(1.4rem, 2.5vw, 2rem); line-height: 1.2"
           >
             {{ opera.title }}
           </div>
-          <div class="text-cream/50 text-sm mt-1">{{ opera.tagline }}</div>
+          <div
+            class="font-cormorant text-cream/60"
+            style="
+              font-size: 0.95rem;
+              margin-top: 0.4rem;
+              font-style: italic;
+              opacity: 0.75;
+            "
+          >
+            {{ opera.tagline }}
+          </div>
         </div>
+
+        <!-- Freccia -->
         <div
-          class="text-gold/30 group-hover:text-gold/60 transition-colors text-xl"
+          class="text-gold/30 group-hover:text-gold/60 transition-colors"
+          style="font-size: 1.5rem"
         >
           ›
         </div>
@@ -70,7 +150,7 @@ const { data: compositore } = await useAsyncData(
   () =>
     queryCollection(locale.value)
       .where("path", "=", `/${locale.value}/${slug}`)
-      .first()
+      .first(),
 );
 
 if (!compositore.value) {
@@ -85,7 +165,7 @@ const { data: opere } = await useAsyncData(
   () =>
     queryCollection(locale.value)
       .where("path", "LIKE", `/${locale.value}/${slug}/%`)
-      .all()
+      .all(),
 );
 
 useSeoMeta({

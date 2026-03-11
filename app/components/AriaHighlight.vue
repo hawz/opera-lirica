@@ -1,12 +1,20 @@
 <template>
   <div
-    class="my-8 p-6 bg-gold/5 border border-dashed border-gold/25 text-center"
+    style="
+      margin: 2rem 0;
+      padding: 1.5rem 2rem;
+      background: rgba(201, 168, 76, 0.05);
+      border: 1px dashed rgba(201, 168, 76, 0.25);
+      text-align: center;
+    "
   >
-    <div class="text-2xl mb-2">♪</div>
-    <div class="font-playfair italic text-gold-light text-xl mb-2">
+    <div style="font-size: 1.5rem; margin-bottom: 0.5rem">♪</div>
+    <div class="font-playfair italic text-gold-light" style="font-size: 1.3rem">
       {{ aria.nome }}
     </div>
-    <div class="text-cream/70 text-sm">{{ aria.descrizione }}</div>
+    <div style="font-size: 0.95rem; color: #d4c4a0; margin-top: 0.5rem">
+      {{ aria.descrizione }}
+    </div>
   </div>
 </template>
 

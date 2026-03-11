@@ -1,43 +1,73 @@
 <template>
-  <div class="max-w-3xl mx-auto px-4 py-12">
+  <div class="max-w-4xl mx-auto px-4 py-12">
     <!-- Back -->
     <NuxtLink
       :to="localePath(`/${slug.compositore}`)"
       class="font-cinzel text-xs text-gold/50 tracking-widest hover:text-gold transition-colors"
+      style="letter-spacing: 0.15em"
     >
       ← {{ opera?.compositore?.toUpperCase() }}
     </NuxtLink>
 
-    <div v-if="opera" class="mt-8">
+    <div
+      v-if="opera"
+      style="
+        margin-top: 2rem;
+        border: 1px solid rgba(201, 168, 76, 0.25);
+        background: linear-gradient(
+          160deg,
+          rgba(36, 26, 14, 0.6) 0%,
+          rgba(13, 10, 7, 0.9) 100%
+        );
+        padding: 2rem 2.5rem;
+      "
+    >
       <!-- Header opera -->
-      <div class="mb-10">
+      <div
+        style="
+          margin-bottom: 2.5rem;
+          padding-bottom: 2rem;
+          border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+        "
+      >
         <div
-          class="font-cormorant italic text-gold/70 text-sm tracking-widest mb-2"
+          class="font-cormorant italic text-gold"
+          style="
+            font-size: 0.85rem;
+            letter-spacing: 0.3em;
+            opacity: 0.7;
+            margin-bottom: 0.3rem;
+          "
         >
           {{ opera.anno }}
         </div>
         <h1
-          class="font-playfair italic text-cream text-4xl md:text-5xl leading-tight"
+          class="font-playfair italic text-cream"
+          style="font-size: clamp(1.6rem, 4vw, 3rem); line-height: 1.2"
         >
           {{ opera.title }}
         </h1>
-        <p class="font-cormorant italic text-cream/60 text-lg mt-3">
+        <p
+          class="font-cormorant italic text-cream/60"
+          style="font-size: 0.95rem; margin-top: 0.4rem; opacity: 0.75"
+        >
           {{ opera.tagline }}
         </p>
-        <div
-          class="w-48 h-px bg-gradient-to-r from-gold/50 to-transparent mt-6"
-        />
       </div>
 
       <!-- Personaggi -->
       <OperaCharacters
         v-if="opera.personaggi"
         :personaggi="opera.personaggi"
-        class="mb-10"
+        style="margin-bottom: 2.5rem"
       />
 
       <!-- Atti -->
-      <OperaActs v-if="opera.atti" :atti="opera.atti" class="mb-4" />
+      <OperaActs
+        v-if="opera.atti"
+        :atti="opera.atti"
+        style="margin-bottom: 2rem"
+      />
 
       <!-- Aria -->
       <AriaHighlight v-if="opera.aria" :aria="opera.aria" />
@@ -62,7 +92,7 @@ const { data: opera } = await useAsyncData(
   () =>
     queryCollection(locale.value)
       .where("path", "=", `/${locale.value}/${slug.compositore}/${slug.opera}`)
-      .first()
+      .first(),
 );
 
 if (!opera.value) {
