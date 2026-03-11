@@ -68,4 +68,18 @@ const { data: opera } = await useAsyncData(
 if (!opera.value) {
   throw createError({ statusCode: 404, statusMessage: "Opera non trovata" });
 }
+
+useSeoMeta({
+  title: () =>
+    opera.value
+      ? `${opera.value.title} — ${opera.value.compositore} — Opera Guide`
+      : "Opera Guide",
+  description: () =>
+    opera.value ? `${opera.value.tagline} ${opera.value.anno}.` : "",
+  ogTitle: () =>
+    opera.value ? `${opera.value.title} — ${opera.value.compositore}` : "",
+  ogDescription: () => opera.value?.tagline ?? "",
+  ogType: "article",
+  twitterCard: "summary",
+});
 </script>

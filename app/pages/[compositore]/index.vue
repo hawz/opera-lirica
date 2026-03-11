@@ -15,7 +15,7 @@
       <div
         class="font-cormorant italic text-gold/70 tracking-widest text-sm mb-2"
       >
-        {{ compositore.years || compositore.meta.years }}
+        {{ compositore.years }}
       </div>
       <h1 class="font-cinzel text-4xl md:text-5xl text-cream tracking-wide">
         {{ compositore.title }}
@@ -60,7 +60,7 @@
 
 <script setup>
 const route = useRoute();
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 const localePath = useLocalePath();
 const slug = route.params.compositore;
 
@@ -86,4 +86,16 @@ const { data: opere } = await useAsyncData(
       .where("path", "LIKE", `/${locale.value}/${slug}/%`)
       .all()
 );
+
+useSeoMeta({
+  title: () =>
+    compositore.value
+      ? `${compositore.value.title} (${compositore.value.years}) — Opera Guide`
+      : "Opera Guide",
+  description: () => compositore.value?.bio ?? "",
+  ogTitle: () => compositore.value?.title ?? "",
+  ogDescription: () => compositore.value?.bio ?? "",
+  ogType: "website",
+  twitterCard: "summary",
+});
 </script>

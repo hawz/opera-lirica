@@ -19,7 +19,7 @@
         <div
           class="font-cormorant italic text-gold/70 text-sm tracking-widest mb-1"
         >
-          {{ c.years || c.meta.years }}
+          {{ c.years }}
         </div>
         <h3
           class="font-cinzel text-cream text-2xl tracking-wide group-hover:text-gold-light transition-colors"
@@ -32,7 +32,7 @@
         <div
           class="mt-4 text-gold/50 text-xs font-cinzel tracking-widest group-hover:text-gold transition-colors"
         >
-          {{ c.meta.opere?.length || 0 }} {{ $t("operas_count") }} →
+          {{ c.opere?.length || 0 }} {{ $t("operas_count") }} →
         </div>
       </NuxtLink>
     </div>
@@ -40,8 +40,17 @@
 </template>
 
 <script setup>
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 const localePath = useLocalePath();
+
+useSeoMeta({
+  title: () => t('seo_home_title'),
+  description: () => t('seo_home_description'),
+  ogTitle: () => t('seo_home_title'),
+  ogDescription: () => t('seo_home_description'),
+  ogType: 'website',
+  twitterCard: 'summary',
+})
 
 const { data: compositori } = await useAsyncData(
   `compositori-${locale.value}`,
