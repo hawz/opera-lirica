@@ -39,6 +39,7 @@
         </div>
         <div class="flex-1">
           <div class="font-cormorant italic text-gold/60 text-sm mb-1">
+            <span v-if="slug === 'altri'">{{ opera.compositore }} -</span>
             {{ opera.anno }}
           </div>
           <div

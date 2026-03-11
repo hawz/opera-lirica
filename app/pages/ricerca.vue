@@ -2,12 +2,12 @@
   <div class="max-w-3xl mx-auto px-4 py-12">
     <div class="mb-10">
       <h2 class="font-cinzel text-2xl text-gold-light tracking-widest mb-6">
-        RICERCA
+        {{ $t("search") }}
       </h2>
       <input
         v-model="query"
         type="text"
-        placeholder="Cerca un'opera, un personaggio, un compositore..."
+        :placeholder="searchPlaceholder"
         class="w-full bg-dark-2 border border-gold/30 text-cream font-cormorant text-lg px-5 py-3 outline-none focus:border-gold/60 placeholder:text-cream/30 transition-colors"
       />
     </div>
@@ -18,7 +18,7 @@
         v-if="risultati?.length === 0"
         class="text-cream/40 italic font-cormorant text-lg"
       >
-        Nessun risultato per "{{ query }}"
+        {{ $t("no_results") }} "{{ query }}"
       </div>
       <NuxtLink
         v-for="r in risultati"
@@ -41,22 +41,49 @@
     </div>
 
     <div v-else class="text-cream/30 italic font-cormorant text-lg">
-      Inizia a scrivere per cercare...
+      {{ $t("start_typing") }}
     </div>
   </div>
 </template>
 
 <script setup>
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 const query = ref("");
+const searchPlaceholder = t("search_placeholder");
+
+useSeoMeta({
+  title: () => t("seo_search_title"),
+  description: () => t("seo_search_description"),
+  ogTitle: () => t("seo_search_title"),
+  ogDescription: () => t("seo_search_description"),
+  ogType: "website",
+  twitterCard: "summary",
+});
 
 const { data: risultati } = await useAsyncData(
   `ricerca-${locale.value}`,
-  () => {
-    if (query.value.length < 2) return Promise.resolve([]);
-    return queryCollection(locale.value)
-      .where("title", "LIKE", `%${query.value}%`)
-      .all();
+  async () => {
+    if (query.value.length < 2) return [];
+
+    const [byTitle, byCompositore, byTagline] = await Promise.all([
+      queryCollection(locale.value)
+        .where("title", "LIKE", `%${query.value}%`)
+        .all(),
+      queryCollection(locale.value)
+        .where("compositore", "LIKE", `%${query.value}%`)
+        .all(),
+      queryCollection(locale.value)
+        .where("tagline", "LIKE", `%${query.value}%`)
+        .all(),
+    ]);
+
+    const tutti = [...byTitle, ...byCompositore, ...byTagline];
+    const visti = new Set();
+    return tutti.filter((doc) => {
+      if (visti.has(doc.path)) return false;
+      visti.add(doc.path);
+      return true;
+    });
   },
   { watch: [query] }
 );
