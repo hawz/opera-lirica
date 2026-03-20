@@ -32,6 +32,5 @@ export default defineContentConfig({
   collections: {
     en: defineCollection({ type: 'page', source: 'en/**/*.md', schema: operaSchema }),
     it: defineCollection({ type: 'page', source: 'it/**/*.md', schema: operaSchema }),
-    // fr: defineCollection({ type: 'page', source: 'fr/**/*.md', schema: operaSchema }),
   },
 })
