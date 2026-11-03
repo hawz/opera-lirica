@@ -3,7 +3,7 @@
     <!-- Section label -->
     <div class="flex items-center gap-4" style="margin-bottom: 1.2rem">
       <span
-        class="font-cinzel text-gold uppercase"
+        class="font-cinzel text-accent uppercase"
         style="font-size: 0.75rem; letter-spacing: 0.4em"
       >
         {{ $t("characters") }}
@@ -14,7 +14,7 @@
           height: 1px;
           background: linear-gradient(
             90deg,
-            rgba(201, 168, 76, 0.3),
+            rgb(var(--color-accent) / 0.3),
             transparent
           );
         "
@@ -34,15 +34,15 @@
         :key="p.nome"
         style="
           padding: 1rem 1.2rem;
-          border: 1px solid rgba(201, 168, 76, 0.15);
-          background: rgba(0, 0, 0, 0.3);
+          border: 1px solid rgb(var(--color-accent) / 0.15);
+          background: rgb(var(--color-bg) / 0.3);
         "
       >
         <div
           class="font-playfair"
           style="
             font-weight: 700;
-            color: #f5edd8;
+            color: rgb(var(--color-text));
             font-size: 1rem;
             margin-bottom: 0.2rem;
           "
@@ -50,7 +50,7 @@
           {{ p.nome }}
         </div>
         <div
-          class="font-cormorant italic text-gold"
+          class="font-cormorant italic text-accent"
           style="
             font-size: 0.78rem;
             letter-spacing: 0.1em;
@@ -60,7 +60,7 @@
         >
           {{ p.voce }}
         </div>
-        <div style="font-size: 0.9rem; color: #d4c4a0; line-height: 1.5">
+        <div style="font-size: 0.9rem; color: rgb(var(--color-text-dim)); line-height: 1.5">
           {{ p.descrizione }}
         </div>
       </div>

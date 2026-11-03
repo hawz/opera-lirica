@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-dark text-cream font-cormorant relative">
+  <div class="min-h-screen bg-bg text-text font-cormorant relative">
     <!-- Luce centrale -->
     <!-- <div class="pointer-events-none fixed inset-0 z-0" aria-hidden="true">
       <div
@@ -56,6 +56,12 @@ onMounted(() => {
 </script>
 
 <style>
+/*
+ * The opening curtain is a one-time intro animation of a literal red
+ * velvet stage curtain. Its colors are intentionally fixed (not themed):
+ * a theatre curtain is red regardless of which site theme (Sipario /
+ * Palco Chiaro) the visitor is using.
+ */
 #curtain {
   position: fixed;
   inset: 0;

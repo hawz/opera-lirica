@@ -2,7 +2,7 @@
   <div class="max-w-4xl mx-auto px-4 py-12">
     <NuxtLink
       :to="localePath('/')"
-      class="font-cinzel text-xs text-gold/50 tracking-widest hover:text-gold transition-colors"
+      class="font-cinzel text-xs text-accent/50 tracking-widest hover:text-accent transition-colors"
       style="letter-spacing: 0.15em"
     >
       ← {{ $t("all_composers") }}
@@ -11,25 +11,25 @@
     <!-- Composer header -->
     <div
       v-if="compositore"
-      class="text-center relative border border-gold/20"
+      class="text-center relative border border-accent/20"
       style="
         margin: 3rem 0;
         padding: 3rem 2rem;
         background: linear-gradient(
           135deg,
-          rgba(36, 26, 14, 0.8) 0%,
-          rgba(26, 18, 9, 0.95) 100%
+          rgb(var(--color-bg-2) / 0.8) 0%,
+          rgb(var(--color-bg) / 0.95) 100%
         );
       "
     >
       <!-- Bordo interno decorativo -->
       <div
         class="absolute pointer-events-none"
-        style="inset: 8px; border: 1px solid rgba(201, 168, 76, 0.1)"
+        style="inset: 8px; border: 1px solid rgb(var(--color-accent) / 0.1)"
         aria-hidden="true"
       />
       <div
-        class="font-cormorant italic text-gold"
+        class="font-cormorant italic text-accent"
         style="
           font-size: 1rem;
           letter-spacing: 0.3em;
@@ -40,13 +40,13 @@
         {{ compositore.years }}
       </div>
       <h1
-        class="font-cinzel text-cream"
+        class="font-cinzel text-text"
         style="font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: 0.1em"
       >
         {{ compositore.title }}
       </h1>
       <p
-        class="font-cormorant italic text-cream/70 mx-auto mt-6"
+        class="font-cormorant italic text-text/70 mx-auto mt-6"
         style="max-width: 600px; line-height: 1.8; font-size: 1.05rem"
       >
         {{ compositore.bio }}
@@ -59,26 +59,18 @@
         v-for="(opera, i) in opere"
         :key="opera.path"
         :to="localePath(`/${slug}/${opera.path.split('/').pop()}`)"
-        class="group"
+        class="group border border-accent/25 hover:border-accent/50 transition-colors"
         style="
           display: flex;
           align-items: center;
           gap: 2rem;
           padding: 2rem 2.5rem;
-          border: 1px solid rgba(201, 168, 76, 0.25);
           background: linear-gradient(
             160deg,
-            rgba(36, 26, 14, 0.6) 0%,
-            rgba(13, 10, 7, 0.9) 100%
+            rgb(var(--color-bg-2) / 0.6) 0%,
+            rgb(var(--color-bg) / 0.9) 100%
           );
           margin-bottom: 4rem;
-          transition: border-color 0.3s;
-        "
-        @mouseover="
-          $event.currentTarget.style.borderColor = 'rgba(201,168,76,0.5)'
-        "
-        @mouseleave="
-          $event.currentTarget.style.borderColor = 'rgba(201,168,76,0.25)'
         "
       >
         <!-- Numero -->
@@ -86,7 +78,7 @@
           class="font-cinzel font-bold"
           style="
             font-size: 3rem;
-            color: rgba(201, 168, 76, 0.2);
+            color: rgb(var(--color-accent) / 0.2);
             min-width: 60px;
             line-height: 1;
           "
@@ -97,7 +89,7 @@
         <!-- Testo -->
         <div style="flex: 1">
           <div
-            class="font-cormorant italic text-gold"
+            class="font-cormorant italic text-accent"
             style="
               font-size: 0.85rem;
               letter-spacing: 0.3em;
@@ -109,13 +101,13 @@
             {{ opera.anno }}
           </div>
           <div
-            class="font-playfair italic text-cream group-hover:text-gold-light transition-colors"
+            class="font-playfair italic text-text group-hover:text-accent-light transition-colors"
             style="font-size: clamp(1.4rem, 2.5vw, 2rem); line-height: 1.2"
           >
             {{ opera.title }}
           </div>
           <div
-            class="font-cormorant text-cream/60"
+            class="font-cormorant text-text/60"
             style="
               font-size: 0.95rem;
               margin-top: 0.4rem;
@@ -129,7 +121,7 @@
 
         <!-- Freccia -->
         <div
-          class="text-gold/30 group-hover:text-gold/60 transition-colors"
+          class="text-accent/30 group-hover:text-accent/60 transition-colors"
           style="font-size: 1.5rem"
         >
           ›

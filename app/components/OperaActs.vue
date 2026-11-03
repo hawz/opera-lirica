@@ -3,7 +3,7 @@
     <!-- Section label -->
     <div class="flex items-center gap-4" style="margin-bottom: 1.2rem">
       <span
-        class="font-cinzel text-gold uppercase"
+        class="font-cinzel text-accent uppercase"
         style="font-size: 0.75rem; letter-spacing: 0.4em"
       >
         {{ $t("story") }}
@@ -14,7 +14,7 @@
           height: 1px;
           background: linear-gradient(
             90deg,
-            rgba(201, 168, 76, 0.3),
+            rgb(var(--color-accent) / 0.3),
             transparent
           );
         "
@@ -28,7 +28,7 @@
         :key="atto.titolo"
         style="
           padding-left: 1.5rem;
-          border-left: 2px solid #8b1a1a;
+          border-left: 2px solid rgb(var(--color-accent-2));
           position: relative;
         "
       >
@@ -40,7 +40,7 @@
             top: 0.5rem;
             width: 8px;
             height: 8px;
-            background: #8b1a1a;
+            background: rgb(var(--color-accent-2));
             border-radius: 50%;
           "
           aria-hidden="true"
@@ -50,13 +50,13 @@
           style="
             font-size: 0.8rem;
             letter-spacing: 0.3em;
-            color: #c0392b;
+            color: rgb(var(--color-accent-2-light));
             margin-bottom: 0.5rem;
           "
         >
           {{ atto.titolo }}
         </div>
-        <p style="font-size: 1.05rem; line-height: 1.8; color: #f0e6cc">
+        <p style="font-size: 1.05rem; line-height: 1.8; color: rgb(var(--color-text-dim))">
           {{ atto.testo }}
         </p>
       </div>

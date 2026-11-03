@@ -4,32 +4,8 @@
     <button
       v-if="visible"
       aria-label="Torna in cima"
-      style="
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        z-index: 100;
-        width: 44px;
-        height: 44px;
-        border: 1px solid rgba(201, 168, 76, 0.4);
-        background: rgba(13, 10, 7, 0.9);
-        color: #c9a84c;
-        font-size: 1.1rem;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition:
-          border-color 0.3s,
-          color 0.3s;
-      "
+      class="scroll-to-top"
       @click="scrollToTop"
-      @mouseover="
-        $event.currentTarget.style.borderColor = 'rgba(201,168,76,0.9)'
-      "
-      @mouseleave="
-        $event.currentTarget.style.borderColor = 'rgba(201,168,76,0.4)'
-      "
     >
       ↑
     </button>
@@ -59,5 +35,29 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgb(var(--color-accent) / 0.4);
+  background: rgb(var(--color-bg) / 0.9);
+  color: rgb(var(--color-accent));
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    border-color 0.3s,
+    color 0.3s;
+}
+
+.scroll-to-top:hover {
+  border-color: rgb(var(--color-accent) / 0.9);
 }
 </style>

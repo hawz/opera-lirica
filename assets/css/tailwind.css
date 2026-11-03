@@ -6,11 +6,29 @@
 
 
 :root {
-  --gold: #c9a84c;
-  --crimson: #8b1a1a;
+  /* Sipario (dark, default theme) */
+  --color-bg: 21 16 10;
+  --color-bg-2: 36 26 15;
+  --color-text: 245 237 216;
+  --color-text-dim: 232 217 184;
+  --color-accent: 201 168 76;
+  --color-accent-light: 232 201 122;
+  --color-accent-2: 139 26 26;
+  --color-accent-2-light: 192 57 43;
+}
+
+:root[data-theme='palco-chiaro'] {
+  --color-bg: 243 234 217;
+  --color-bg-2: 233 220 192;
+  --color-text: 43 29 16;
+  --color-text-dim: 91 74 52;
+  --color-accent: 139 26 26;
+  --color-accent-light: 166 47 47;
+  --color-accent-2: 139 26 26;
+  --color-accent-2-light: 192 57 43;
 }
 
 body {
-  background-color: #0d0a07;
-  color: #d4c4a0;
+  background-color: rgb(var(--color-bg));
+  color: rgb(var(--color-text-dim));
 }

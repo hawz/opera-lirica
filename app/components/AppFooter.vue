@@ -3,8 +3,8 @@
     class="text-center"
     style="
       padding: 3rem;
-      border-top: 1px solid rgba(201, 168, 76, 0.15);
-      color: #d4c4a0;
+      border-top: 1px solid rgb(var(--color-accent) / 0.15);
+      color: rgb(var(--color-text-dim));
       font-style: italic;
       opacity: 0.6;
       font-size: 0.95rem;
@@ -14,7 +14,7 @@
       style="
         width: 200px;
         height: 1px;
-        background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+        background: linear-gradient(90deg, transparent, rgb(var(--color-accent)), transparent);
         margin: 0 auto 1.5rem;
       "
     />

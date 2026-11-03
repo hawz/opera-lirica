@@ -19,5 +19,7 @@
   "seo_search_title": "Search operas and composers — Opera Guide",
   "seo_search_description": "Search through operas and composers: Mozart, Verdi, Puccini and much more.",
   "footer_line1": "The curtain falls — but the music remains.",
-  "footer_line2": "Every opera is a world. Choose yours and let yourself be carried away."
+  "footer_line2": "Every opera is a world. Choose yours and let yourself be carried away.",
+  "theme_open_curtain": "Open the curtain (light theme)",
+  "theme_close_curtain": "Close the curtain (dark theme)"
 }
