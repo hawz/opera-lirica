@@ -7,7 +7,7 @@ aria:
   nome: "Un bel dì vedremo"
   descrizione: "Butterfly imagine le retour de Pinkerton : le navire dans le port, lui qui gravit la colline. C'est l'air le plus déchirant de Puccini, parce que nous savons que cela n'arrivera jamais."
 personaggi:
-  - nome: Cio-Cio-San (Madame Butterfly)
+  - nome: Cio-Cio-San (Butterfly)
     voce: "Soprano"
     descrizione: "Jeune geisha japonaise de quinze ans. Elle se convertit au christianisme pour épouser Pinkerton. Elle attend trois ans son retour. Elle est le symbole de l'amour trahi."
   - nome: Pinkerton
