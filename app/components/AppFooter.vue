@@ -19,7 +19,7 @@
       "
     />
     <p class="font-cormorant italic" style="font-size: 0.95rem">
-      {{ $t("footer_line1") }}<br />
+      {{ $t("footer_line1") }}<br >
       <em>{{ $t("footer_line2") }}</em>
     </p>
   </footer>
