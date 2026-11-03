@@ -5,6 +5,9 @@
       <p class="font-cinzel text-xs tracking-widest" style="letter-spacing: 0.15em; opacity: 0.6">
         PROTOTIPO — ticket #4 — non è una pagina del sito reale
       </p>
+      <p class="font-cormorant italic mt-2" style="opacity: 0.6; font-size: 0.9rem">
+        Lo switch "Sipario aperto/chiuso" nell'header alterna Sipario ↔ Palco Chiaro, come un toggle chiaro/scuro.
+      </p>
       <div class="flex items-center justify-center gap-3 mt-4">
         <button
           v-for="p in palettes"
@@ -41,6 +44,21 @@
         <span class="font-cinzel text-xs tracking-widest" style="letter-spacing: 0.15em; color: var(--accent)">
           🔍 Ricerca
         </span>
+        <span style="color: var(--accent); opacity: 0.3">|</span>
+        <button
+          type="button"
+          class="flex items-center gap-2 font-cinzel text-xs tracking-widest transition-colors"
+          style="color: var(--accent)"
+          :aria-pressed="isLightMode"
+          :title="isLightMode ? 'Chiudi il sipario (tema scuro)' : 'Apri il sipario (tema chiaro)'"
+          @click="toggleCurtain"
+        >
+          <svg width="26" height="16" viewBox="0 0 26 16" aria-hidden="true">
+            <rect y="0" :width="curtainPanelWidth" height="16" fill="#8b1a1a" style="transition: width 0.35s ease" />
+            <rect :x="26 - curtainPanelWidth" y="0" :width="curtainPanelWidth" height="16" fill="#8b1a1a" style="transition: x 0.35s ease, width 0.35s ease" />
+          </svg>
+          {{ isLightMode ? 'Sipario aperto' : 'Sipario chiuso' }}
+        </button>
         <span style="color: var(--accent); opacity: 0.3">|</span>
         <span class="font-cinzel text-xs tracking-widest" style="color: var(--accent)">EN</span>
         <span class="font-cinzel text-xs tracking-widest" style="opacity: 0.5; color: var(--text-dim)">IT</span>
@@ -165,6 +183,13 @@ const ctaStyle = computed(() => ({
   color: selectedPalette.value.accentLight,
   borderColor: selectedPalette.value.border,
 }))
+
+const isLightMode = computed(() => selectedKey.value === 'palco-chiaro')
+const curtainPanelWidth = computed(() => (isLightMode.value ? 5 : 13))
+
+function toggleCurtain() {
+  selectedKey.value = isLightMode.value ? 'sipario' : 'palco-chiaro'
+}
 
 function switcherStyle(palette) {
   const active = palette.key === selectedKey.value
