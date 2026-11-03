@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxt/content', '@nuxtjs/tailwindcss', '@nuxtjs/i18n'],
+  modules: ['@nuxt/content', '@nuxtjs/tailwindcss', '@nuxtjs/i18n', '@nuxt/eslint'],
   // css: ['~/assets/css/main.css'],
   content: {
     highlight: false,

@@ -3,7 +3,6 @@
   <Transition name="fade">
     <button
       v-if="visible"
-      @click="scrollToTop"
       aria-label="Torna in cima"
       style="
         position: fixed;
@@ -24,6 +23,7 @@
           border-color 0.3s,
           color 0.3s;
       "
+      @click="scrollToTop"
       @mouseover="
         $event.currentTarget.style.borderColor = 'rgba(201,168,76,0.9)'
       "

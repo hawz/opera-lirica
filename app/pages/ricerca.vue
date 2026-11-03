@@ -4,8 +4,9 @@
       <h2 class="font-cinzel text-2xl text-gold-light tracking-widest mb-6">
         {{ $t("search") }}
       </h2>
-      <input v-model="query" type="text" :placeholder="searchPlaceholder"
-        class="w-full bg-dark-2 border border-gold/30 text-cream font-cormorant text-lg px-5 py-3 outline-none focus:border-gold/60 placeholder:text-cream/30 transition-colors" />
+      <input
+        v-model="query" type="text" :placeholder="searchPlaceholder"
+        class="w-full bg-dark-2 border border-gold/30 text-cream font-cormorant text-lg px-5 py-3 outline-none focus:border-gold/60 placeholder:text-cream/30 transition-colors" >
     </div>
 
     <!-- Risultati -->
@@ -13,7 +14,8 @@
 
       <!-- Loading -->
       <div v-if="loading" class="space-y-3">
-        <div v-for="n in 3" :key="n"
+        <div
+          v-for="n in 3" :key="n"
           style="height: 80px; border: 1px solid rgba(201,168,76,0.1); background: rgba(26,18,9,0.5); animation: pulse 1.5s ease-in-out infinite;" />
       </div>
 
@@ -24,7 +26,8 @@
 
       <!-- Lista risultati -->
       <div v-else class="space-y-3">
-        <NuxtLink v-for="r in risultati" :key="r.path" :to="localePath(r.path.replace(`/${locale}`, ''))"
+        <NuxtLink
+          v-for="r in risultati" :key="r.path" :to="localePath(r.path.replace(`/${locale}`, ''))"
           class="block p-5 border border-gold/20 hover:border-gold/40 bg-dark-2/50 transition-all group">
           <div class="font-cormorant italic text-gold/60 text-sm mb-1">
             {{ r.compositore || r.years }}

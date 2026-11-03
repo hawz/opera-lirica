@@ -141,7 +141,7 @@
 
 <script setup>
 const route = useRoute();
-const { locale, t } = useI18n();
+const { locale } = useI18n();
 const localePath = useLocalePath();
 const slug = route.params.compositore;
 
