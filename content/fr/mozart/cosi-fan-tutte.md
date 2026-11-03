@@ -12,7 +12,7 @@ personaggi:
     descrizione: "Convaincue d'aimer son fiancé avec une fidélité absolue. Sa résistance est la plus longue — et sa chute, la plus belle."
   - nome: Dorabella
     voce: "Mezzo-soprano"
-    descrizione: "La sœur de Fiordiligi, plus frivole et enjouée. Elle céde la première et sans grands scrupules. Ce n'est pas un défaut — c'est de l'honnêteté."
+    descrizione: "La sœur de Fiordiligi, plus frivole et enjouée. Elle cède la première et sans grands scrupules. Ce n'est pas un défaut — c'est de l'honnêteté."
   - nome: Ferrando
     voce: "Ténor"
     descrizione: "Le fiancé de Dorabella. Il accepte le pari, convaincu qu'il va gagner. Il découvre que l'amour est plus compliqué qu'il ne le pensait."
@@ -31,7 +31,7 @@ atti:
   - titolo: "Acte I — Les déguisements"
     testo: "Les deux hommes reviennent méconnaissables, moustaches et costumes exotiques. Ils font semblant d'être frappés au premier regard par les deux femmes. Dorabella et Fiordiligi sont indignées — comment osent-ils ? Guglielmo et Ferrando se félicitent : leurs femmes sont parfaites. Don Alfonso attend."
   - titolo: "Acte II — La chute"
-    testo: "Despina persuade les deux sœurs qu'une petite distraction ne fait pas de mal. Dorabella céde la première, à Guglielmo — le fiancé de sa sœur. Fiordiligi résiste plus longtemps, avec des discours passionnés sur la fidélité, mais elle aussi finit par céder à Ferrando. Les deux officiers sont bouleversés : chacun a séduit la fiancée de l'autre. Ferrando est blessé. Guglielmo rit — mais amèrement."
+    testo: "Despina persuade les deux sœurs qu'une petite distraction ne fait pas de mal. Dorabella cède la première, à Guglielmo — le fiancé de sa sœur. Fiordiligi résiste plus longtemps, avec des discours passionnés sur la fidélité, mais elle aussi finit par céder à Ferrando. Les deux officiers sont bouleversés : chacun a séduit la fiancée de l'autre. Ferrando est blessé. Guglielmo rit — mais amèrement."
   - titolo: "Le Finale — Le mariage et le démasquage"
     testo: "Don Alfonso pousse les choses jusqu'au bout : il organise un faux mariage entre les couples échangés. Au milieu de la cérémonie, les fiancés d'origine « reviennent ». Ils trouvent les preuves de la trahison. Fureur, larmes, aveux. Puis Don Alfonso révèle tout : c'était un jeu. Les couples d'origine se retrouvent — peut-être. Mozart ne nous dit pas s'ils sont vraiment heureux."
 finale: "Così fan tutte est l'opéra le plus moderne de Mozart : il ne punit personne, n'absout personne. Il nous dit que l'amour est fragile, que la fidélité est un choix difficile, et que Don Alfonso avait peut-être tort — non pas parce que les femmes sont fidèles, mais parce que les hommes ne le sont pas non plus."
