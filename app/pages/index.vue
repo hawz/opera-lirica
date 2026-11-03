@@ -32,7 +32,7 @@
         <div
           class="mt-4 text-accent/50 text-xs font-cinzel tracking-widest group-hover:text-accent transition-colors"
         >
-          {{ c.opere?.length || 0 }} {{ $t("operas_count") }} →
+          {{ c.opere?.length || 0 }} {{ $t("operas_count", c.opere?.length || 0) }} →
         </div>
       </NuxtLink>
     </div>
