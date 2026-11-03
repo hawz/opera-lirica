@@ -3,7 +3,7 @@
     <!-- Back -->
     <NuxtLink
       :to="localePath(`/${slug.compositore}`)"
-      class="font-cinzel text-xs text-gold/50 tracking-widest hover:text-gold transition-colors"
+      class="font-cinzel text-xs text-accent/50 tracking-widest hover:text-accent transition-colors"
       style="letter-spacing: 0.15em"
     >
       ← {{ opera?.compositore?.toUpperCase() }}
@@ -13,11 +13,11 @@
       v-if="opera"
       style="
         margin-top: 2rem;
-        border: 1px solid rgba(201, 168, 76, 0.25);
+        border: 1px solid rgb(var(--color-accent) / 0.25);
         background: linear-gradient(
           160deg,
-          rgba(36, 26, 14, 0.6) 0%,
-          rgba(13, 10, 7, 0.9) 100%
+          rgb(var(--color-bg-2) / 0.6) 0%,
+          rgb(var(--color-bg) / 0.9) 100%
         );
         padding: 2rem 2.5rem;
       "
@@ -27,11 +27,11 @@
         style="
           margin-bottom: 2.5rem;
           padding-bottom: 2rem;
-          border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+          border-bottom: 1px solid rgb(var(--color-accent) / 0.1);
         "
       >
         <div
-          class="font-cormorant italic text-gold"
+          class="font-cormorant italic text-accent"
           style="
             font-size: 0.85rem;
             letter-spacing: 0.3em;
@@ -42,13 +42,13 @@
           {{ opera.anno }}
         </div>
         <h1
-          class="font-playfair italic text-cream"
+          class="font-playfair italic text-text"
           style="font-size: clamp(1.6rem, 4vw, 3rem); line-height: 1.2"
         >
           {{ opera.title }}
         </h1>
         <p
-          class="font-cormorant italic text-cream/60"
+          class="font-cormorant italic text-text/60"
           style="font-size: 0.95rem; margin-top: 0.4rem; opacity: 0.75"
         >
           {{ opera.tagline }}

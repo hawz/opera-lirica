@@ -19,5 +19,7 @@
   "seo_search_title": "Rechercher opéras et compositeurs — Guide de l'Opéra",
   "seo_search_description": "Recherchez parmi les opéras et les compositeurs : Mozart, Verdi, Puccini et bien d'autres.",
   "footer_line1": "Le rideau tombe — mais la musique demeure.",
-  "footer_line2": "Chaque opéra est un monde. Choisissez le vôtre et laissez-vous emporter."
+  "footer_line2": "Chaque opéra est un monde. Choisissez le vôtre et laissez-vous emporter.",
+  "theme_open_curtain": "Ouvrir le rideau (thème clair)",
+  "theme_close_curtain": "Fermer le rideau (thème sombre)"
 }

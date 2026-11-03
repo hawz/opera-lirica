@@ -1,10 +1,10 @@
 <template>
   <div class="max-w-4xl mx-auto px-4 py-16">
     <div class="text-center mb-16">
-      <h2 class="font-playfair italic text-gold-light text-3xl mb-6">
+      <h2 class="font-playfair italic text-accent-light text-3xl mb-6">
         {{ $t("welcome_title") }}
       </h2>
-      <p class="text-cream-2/80 text-lg leading-relaxed max-w-2xl mx-auto">
+      <p class="text-text-dim/80 text-lg leading-relaxed max-w-2xl mx-auto">
         {{ $t("welcome_text") }}
       </p>
     </div>
@@ -14,23 +14,23 @@
         v-for="c in compositoriOrdinati"
         :key="c.slug"
         :to="localePath(`/${c.slug}`)"
-        class="block p-8 border border-gold/25 bg-gradient-to-br from-dark-2/80 to-dark/95 hover:border-gold/50 transition-all duration-300 group"
+        class="block p-8 border border-accent/25 bg-gradient-to-br from-bg-2/80 to-bg/95 hover:border-accent/50 transition-all duration-300 group"
       >
         <div
-          class="font-cormorant italic text-gold/70 text-sm tracking-widest mb-1"
+          class="font-cormorant italic text-accent/70 text-sm tracking-widest mb-1"
         >
           {{ c.years }}
         </div>
         <h3
-          class="font-cinzel text-cream text-2xl tracking-wide group-hover:text-gold-light transition-colors"
+          class="font-cinzel text-text text-2xl tracking-wide group-hover:text-accent-light transition-colors"
         >
           {{ c.title }}
         </h3>
-        <p class="text-cream/60 text-sm mt-3 leading-relaxed line-clamp-2">
+        <p class="text-text/60 text-sm mt-3 leading-relaxed line-clamp-2">
           {{ c.bio }}
         </p>
         <div
-          class="mt-4 text-gold/50 text-xs font-cinzel tracking-widest group-hover:text-gold transition-colors"
+          class="mt-4 text-accent/50 text-xs font-cinzel tracking-widest group-hover:text-accent transition-colors"
         >
           {{ c.opere?.length || 0 }} {{ $t("operas_count") }} →
         </div>
