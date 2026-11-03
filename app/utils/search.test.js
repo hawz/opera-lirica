@@ -41,6 +41,43 @@ describe('searchOperas', () => {
       taglineMatch,
     ])
   })
+
+  it('matches a document by a character name', () => {
+    const donGiovanni = {
+      path: '/en/mozart/don-giovanni',
+      title: 'Don Giovanni',
+      compositore: 'Mozart',
+      tagline: 'The unrepentant seducer',
+      personaggi: [{ nome: 'Leporello', voce: 'Bass' }],
+    }
+
+    expect(searchOperas([aida, tosca, donGiovanni], 'leporello')).toEqual([donGiovanni])
+  })
+
+  it('deduplicates when a document matches both a top-level field and a character name', () => {
+    const doc = {
+      path: '/en/mozart/don-giovanni',
+      title: 'Don Giovanni',
+      compositore: 'Mozart',
+      tagline: 'Don Giovanni meets his fate',
+      personaggi: [{ nome: 'Don Giovanni', voce: 'Baritone' }],
+    }
+
+    expect(searchOperas([doc], 'don giovanni')).toEqual([doc])
+  })
+
+  it('ranks character-name matches after title, composer and tagline matches', () => {
+    const titleMatch = { path: '/en/a', title: 'Opera', compositore: 'X', tagline: 'Z' }
+    const personaggioMatch = { path: '/en/b', title: 'B', compositore: 'X', tagline: 'Z', personaggi: [{ nome: 'Opera' }] }
+
+    expect(searchOperas([personaggioMatch, titleMatch], 'opera')).toEqual([titleMatch, personaggioMatch])
+  })
+
+  it('does not match a document whose personaggi array has no matching nome', () => {
+    const doc = { path: '/en/a', title: 'A', compositore: 'X', tagline: 'Z', personaggi: [{ nome: 'Leporello' }] }
+
+    expect(searchOperas([doc], 'zerlina')).toEqual([])
+  })
 })
 
 describe('shouldSearch', () => {
