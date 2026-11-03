@@ -9,7 +9,7 @@
     </div>
 
     <!-- Risultati -->
-    <div v-if="query.length > 1">
+    <div v-if="isSearchActive">
 
       <!-- Loading -->
       <div v-if="loading" class="space-y-3">
@@ -54,6 +54,7 @@ const query = ref('')
 const risultati = ref([])
 const loading = ref(false)
 const searchPlaceholder = t('search_placeholder')
+const isSearchActive = computed(() => shouldSearch(query.value))
 
 useSeoMeta({
   title: () => t('seo_search_title'),
@@ -65,27 +66,14 @@ useSeoMeta({
 })
 
 watch(query, async (val) => {
-  if (val.trim().length < 2) {
+  if (!shouldSearch(val)) {
     risultati.value = []
     return
   }
 
   loading.value = true
-
-  const [byTitle, byCompositore, byTagline] = await Promise.all([
-    queryCollection(locale.value).where('title', 'LIKE', `%${val}%`).all(),
-    queryCollection(locale.value).where('compositore', 'LIKE', `%${val}%`).all(),
-    queryCollection(locale.value).where('tagline', 'LIKE', `%${val}%`).all(),
-  ])
-
-  const tutti = [...byTitle, ...byCompositore, ...byTagline]
-  const visti = new Set()
-  risultati.value = tutti.filter((doc) => {
-    if (visti.has(doc.path)) return false
-    visti.add(doc.path)
-    return true
-  })
-
+  const docs = await queryCollection(locale.value).all()
+  risultati.value = searchOperas(docs, val)
   loading.value = false
 })
 </script>
