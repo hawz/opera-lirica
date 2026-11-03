@@ -1,6 +1,6 @@
 import { z } from '@nuxt/content'
 
-export const activeLocales = ['en', 'it']
+export const activeLocales = ['en', 'it', 'fr']
 
 export const operaSchema = z.object({
   order: z.number().optional(),
