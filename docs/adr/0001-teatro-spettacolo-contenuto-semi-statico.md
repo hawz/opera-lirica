@@ -1,0 +1,3 @@
+# Teatro e Spettacolo come contenuto semi-statico, non su database
+
+Per l'epic #10 (ricerca teatri vicini + palinsesto), Teatro e Spettacolo sono modellati come contenuto editoriale (file markdown/JSON validati da schema, redeploy per ogni aggiornamento), esattamente come Opera e Compositore, invece di introdurre un database e un backend dedicato. Il progetto non ha mai avuto un backend oltre a Nuxt Content, il palinsesto dei ~10 teatri della v1 non cambia abbastanza spesso da giustificarne uno, e questo evita di aggiungere un intero layer infrastrutturale per un bisogno non ancora dimostrato. Potrà essere rivisto in futuro se il volume di teatri/spettacoli o la frequenza di aggiornamento lo richiederanno.

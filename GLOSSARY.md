@@ -37,13 +37,13 @@ _Avoid_: Lingua (Lingua è l'attributo umano; Locale è la collection tecnica di
 Termini introdotti in sede di pianificazione per una fase successiva (ricerca teatri vicini + programmazione). Provvisori: da affinare quando questa fase verrà effettivamente progettata.
 
 **Teatro**:
-Un luogo fisico dove si rappresentano Opere dal vivo, geolocalizzato.
+Un luogo fisico dove si rappresentano Opere dal vivo. Per la v1 limitato a teatri in Italia; associato a una città/zona scelta dall'utente tra quelle coperte dal catalogo, non a una posizione geografica continua (nessun calcolo di distanza).
 _Avoid_: Sala, venue.
 
 **Palinsesto**:
-L'insieme degli Spettacoli programmati in un Teatro in un intervallo di tempo.
+L'insieme degli Spettacoli futuri (non ancora andati in scena) programmati in un Teatro. Uno Spettacolo con data passata esce automaticamente dal Palinsesto pubblico.
 _Avoid_: Calendario, programmazione (usabile come sinonimo descrittivo, ma "Palinsesto" è il termine canonico).
 
 **Spettacolo**:
-Una singola rappresentazione dal vivo di un'Opera, in un Teatro, in una data specifica. Distinto da "Opera": l'Opera è il contenuto editoriale, lo Spettacolo è l'evento prenotabile.
+Una singola rappresentazione dal vivo di un'Opera, in un Teatro, in una data specifica. Fa sempre riferimento a un'Opera già catalogata (stesso slug): non esistono Spettacoli di opere non censite nel sito. Distinto da "Opera": l'Opera è il contenuto editoriale, lo Spettacolo è l'evento.
 _Avoid_: Opera (per l'evento), show, performance.
