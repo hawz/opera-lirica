@@ -21,5 +21,12 @@
   "footer_line1": "Le rideau tombe — mais la musique demeure.",
   "footer_line2": "Chaque opéra est un monde. Choisissez le vôtre et laissez-vous emporter.",
   "theme_open_curtain": "Ouvrir le rideau (thème clair)",
-  "theme_close_curtain": "Fermer le rideau (thème sombre)"
+  "theme_close_curtain": "Fermer le rideau (thème sombre)",
+  "teatri_nav": "THÉÂTRES",
+  "teatri_title": "Les Théâtres",
+  "teatri_subtitle": "Choisissez votre ville et découvrez les théâtres d'opéra qui l'animent.",
+  "teatri_choose_city": "Choisissez une ville pour voir ses théâtres...",
+  "teatro_website": "Site du théâtre",
+  "seo_teatri_title": "Les théâtres d'opéra italiens — Guide de l'Opéra",
+  "seo_teatri_description": "Découvrez les principaux théâtres d'opéra italiens par ville : adresse, description et lien vers le site officiel."
 }
