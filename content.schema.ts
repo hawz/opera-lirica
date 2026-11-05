@@ -29,3 +29,11 @@ export const operaSchema = z.object({
     slug: z.string().optional(),
   })).optional(),
 })
+
+export const teatroSchema = z.object({
+  nome: z.string(),
+  città: z.string(),
+  indirizzo: z.string(),
+  descrizione: z.string(),
+  sito_web: z.string().optional(),
+})

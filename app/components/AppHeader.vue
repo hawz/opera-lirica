@@ -61,6 +61,14 @@
         🔍 {{ $t("search") }}
       </NuxtLink>
       <span class="text-accent/20">|</span>
+      <NuxtLink
+        :to="localePath('/teatri')"
+        class="font-cinzel text-xs text-accent/40 tracking-widest hover:text-accent transition-colors"
+        style="letter-spacing: 0.15em"
+      >
+        🎭 {{ $t("teatri_nav") }}
+      </NuxtLink>
+      <span class="text-accent/20">|</span>
       <button
         type="button"
         class="flex items-center gap-2 font-cinzel text-xs text-accent/40 tracking-widest hover:text-accent transition-colors"
