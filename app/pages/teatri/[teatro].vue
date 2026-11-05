@@ -32,36 +32,7 @@
       >
         {{ teatro.città }}
       </div>
-      <h1
-        class="font-playfair italic text-text"
-        style="font-size: clamp(1.6rem, 4vw, 3rem); line-height: 1.2"
-      >
-        {{ teatro.nome }}
-      </h1>
-      <p
-        class="font-cormorant italic text-text/60"
-        style="font-size: 0.95rem; margin-top: 0.4rem; opacity: 0.75"
-      >
-        {{ teatro.indirizzo }}
-      </p>
-
-      <p
-        class="font-cormorant text-text/80"
-        style="font-size: 1.1rem; line-height: 1.8; margin-top: 2rem"
-      >
-        {{ teatro.descrizione }}
-      </p>
-
-      <a
-        v-if="teatro.sito_web"
-        :href="teatro.sito_web"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-block font-cinzel text-xs text-accent/50 tracking-widest hover:text-accent transition-colors"
-        style="letter-spacing: 0.15em; margin-top: 2rem"
-      >
-        {{ $t("teatro_website") }} ↗
-      </a>
+      <TeatroDetails :teatro="teatro" />
     </div>
   </div>
 </template>
