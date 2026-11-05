@@ -28,5 +28,8 @@
   "teatri_choose_city": "Choose a city to see its theatres...",
   "teatro_website": "Theatre website",
   "seo_teatri_title": "Italian Opera Houses — Opera Guide",
-  "seo_teatri_description": "Discover the major Italian opera houses by city: address, description and a link to the official website."
+  "seo_teatri_description": "Discover the major Italian opera houses by city: address, description and a link to the official website.",
+  "palinsesto_title": "Upcoming Performances",
+  "palinsesto_empty": "No performances currently scheduled.",
+  "spettacolo_tickets": "Tickets"
 }

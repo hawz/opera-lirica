@@ -37,3 +37,11 @@ export const teatroSchema = z.object({
   descrizione: z.string(),
   sito_web: z.string().optional(),
 })
+
+export const spettacoloSchema = z.object({
+  opera: z.string(),
+  teatro: z.string(),
+  data: z.string(),
+  ora: z.string().optional(),
+  link_biglietti: z.string().optional(),
+})

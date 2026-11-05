@@ -28,5 +28,8 @@
   "teatri_choose_city": "Choisissez une ville pour voir ses théâtres...",
   "teatro_website": "Site du théâtre",
   "seo_teatri_title": "Les théâtres d'opéra italiens — Guide de l'Opéra",
-  "seo_teatri_description": "Découvrez les principaux théâtres d'opéra italiens par ville : adresse, description et lien vers le site officiel."
+  "seo_teatri_description": "Découvrez les principaux théâtres d'opéra italiens par ville : adresse, description et lien vers le site officiel.",
+  "palinsesto_title": "Au Programme",
+  "palinsesto_empty": "Aucun spectacle actuellement programmé.",
+  "spettacolo_tickets": "Billets"
 }
