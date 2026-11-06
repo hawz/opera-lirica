@@ -74,6 +74,22 @@
 
       <!-- Finale -->
       <OperaFinale v-if="opera.finale" :testo="opera.finale" />
+
+      <!-- Spettacoli -->
+      <div
+        v-if="spettacoliInProgramma.length > 0"
+        style="
+          margin-top: 2.5rem;
+          padding-top: 2rem;
+          border-top: 1px solid rgb(var(--color-accent) / 0.1);
+        "
+      >
+        <PalinsestoList
+          :spettacoli="spettacoliInProgramma"
+          title-key="opera_spettacoli_title"
+          empty-key="opera_spettacoli_empty"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -98,6 +114,39 @@ const { data: opera } = await useAsyncData(
 if (!opera.value) {
   throw createError({ statusCode: 404, statusMessage: "Opera non trovata" });
 }
+
+const { data: spettacoli } = await useAsyncData(
+  `spettacoli-opera-${locale.value}-${slug.opera}`,
+  () => queryCollection(`spettacoli_${locale.value}`).all(),
+);
+
+const { data: teatri } = await useAsyncData(`teatri-${locale.value}`, () =>
+  queryCollection(`teatri_${locale.value}`).all(),
+);
+
+const teatriBySlug = computed(() => {
+  const entries = (teatri.value ?? []).map((teatro) => [
+    teatro.path.split("/").pop(),
+    teatro,
+  ]);
+  return Object.fromEntries(entries);
+});
+
+const spettacoliInProgramma = computed(() => {
+  const perQuestaOpera = spettacoliForOpera(spettacoli.value ?? [], slug.opera);
+  const inProgramma = upcomingSpettacoli(perQuestaOpera, new Date());
+
+  return inProgramma.map((spettacolo) => {
+    const teatro = teatriBySlug.value[spettacolo.teatro];
+    return {
+      ...spettacolo,
+      targetLabel: teatro?.nome ?? spettacolo.teatro,
+      targetPath: teatro
+        ? `/${teatro.path.split("/").slice(2).join("/")}`
+        : "/",
+    };
+  });
+});
 
 useSeoMeta({
   title: () =>

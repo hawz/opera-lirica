@@ -18,3 +18,7 @@ export function upcomingSpettacoli(list, referenceDate) {
 export function spettacoliForTeatro(list, teatroSlug) {
   return list.filter((spettacolo) => spettacolo.teatro === teatroSlug)
 }
+
+export function spettacoliForOpera(list, operaSlug) {
+  return list.filter((spettacolo) => spettacolo.opera === operaSlug)
+}

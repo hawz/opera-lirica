@@ -1,5 +1,10 @@
 import { describe, it, expect } from 'vitest'
-import { isUpcoming, upcomingSpettacoli, spettacoliForTeatro } from './spettacoli'
+import {
+  isUpcoming,
+  upcomingSpettacoli,
+  spettacoliForTeatro,
+  spettacoliForOpera,
+} from './spettacoli'
 
 const today = new Date(2026, 10, 5)
 
@@ -51,5 +56,15 @@ describe('spettacoliForTeatro', () => {
 
   it('returns an empty list when no spettacolo matches the teatro', () => {
     expect(spettacoliForTeatro([soon, later], 'la-fenice')).toEqual([])
+  })
+})
+
+describe('spettacoliForOpera', () => {
+  it('filters to spettacoli of the given opera', () => {
+    expect(spettacoliForOpera([soon, later, past], 'turandot')).toEqual([soon])
+  })
+
+  it('returns an empty list when no spettacolo matches the opera', () => {
+    expect(spettacoliForOpera([soon, later], 'la-boheme')).toEqual([])
   })
 })
