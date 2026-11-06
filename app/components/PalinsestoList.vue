@@ -14,43 +14,44 @@
       {{ $t(emptyKey) }}
     </p>
 
-    <ul v-else style="display: flex; flex-direction: column; gap: 1rem">
+    <ul v-else style="display: flex; flex-direction: column; gap: 1.5rem">
       <li
-        v-for="spettacolo in spettacoli"
-        :key="`${spettacolo.data}-${spettacolo.opera}-${spettacolo.teatro}`"
+        v-for="gruppo in gruppi"
+        :key="gruppo.targetPath"
         class="border-t border-accent/10"
         style="padding-top: 1rem"
       >
         <NuxtLink
-          :to="localePath(spettacolo.targetPath)"
+          :to="localePath(gruppo.targetPath)"
           class="font-playfair italic text-text hover:text-accent-light transition-colors"
           style="font-size: 1.1rem"
         >
-          {{ spettacolo.targetLabel }}
+          {{ gruppo.targetLabel }}
         </NuxtLink>
-        <p
-          class="font-cormorant italic text-accent/70"
-          style="font-size: 0.9rem; margin-top: 0.2rem"
-        >
-          {{ formattedDate(spettacolo) }}
-        </p>
-        <a
-          v-if="spettacolo.link_biglietti"
-          :href="spettacolo.link_biglietti"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block font-cinzel text-xs text-accent/50 tracking-widest hover:text-accent transition-colors"
-          style="letter-spacing: 0.15em; margin-top: 0.5rem"
-        >
-          {{ $t("spettacolo_tickets") }} ↗
-        </a>
+        <ul style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.4rem">
+          <li v-for="spettacolo in gruppo.spettacoli" :key="`${spettacolo.data}-${spettacolo.ora ?? ''}`">
+            <p class="font-cormorant italic text-accent/70" style="font-size: 0.9rem">
+              {{ formattedDate(spettacolo) }}
+            </p>
+            <a
+              v-if="spettacolo.link_biglietti"
+              :href="spettacolo.link_biglietti"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block font-cinzel text-xs text-accent/50 tracking-widest hover:text-accent transition-colors"
+              style="letter-spacing: 0.15em; margin-top: 0.2rem"
+            >
+              {{ $t("spettacolo_tickets") }} ↗
+            </a>
+          </li>
+        </ul>
       </li>
     </ul>
   </div>
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
   spettacoli: { type: Array, required: true },
   titleKey: { type: String, default: "palinsesto_title" },
   emptyKey: { type: String, default: "palinsesto_empty" },
@@ -58,6 +59,8 @@ defineProps({
 
 const { locale } = useI18n();
 const localePath = useLocalePath();
+
+const gruppi = computed(() => groupSpettacoliByTarget(props.spettacoli));
 
 function formattedDate(spettacolo) {
   const [year, month, day] = spettacolo.data.split("-").map(Number);
