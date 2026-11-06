@@ -34,6 +34,11 @@ function describeEvento(evento) {
   return `- ${evento.teatro} — ${evento.opera} — ${evento.data}`
 }
 
+function renderSezione(titolo, decisioni, describe) {
+  if (decisioni.length === 0) return null
+  return [titolo, '', ...decisioni.map(describe)].join('\n')
+}
+
 export function generatePrBody(decisioni) {
   const creazioni = decisioni.filter((decisione) => decisione.azione === 'crea')
   const aggiornamenti = decisioni.filter((decisione) => decisione.azione === 'aggiorna')
@@ -41,38 +46,16 @@ export function generatePrBody(decisioni) {
     (decisione) => decisione.azione === 'salta-opera-non-catalogata',
   )
 
-  if (creazioni.length === 0 && aggiornamenti.length === 0 && saltati.length === 0) {
-    return ''
-  }
-
-  const sezioni = []
-
-  if (creazioni.length > 0) {
-    sezioni.push(
-      ['## Nuovi Spettacoli', '', ...creazioni.map((decisione) => describeEvento(decisione.evento))].join('\n'),
-    )
-  }
-
-  if (aggiornamenti.length > 0) {
-    sezioni.push(
-      ['## Spettacoli aggiornati', '', ...aggiornamenti.map((decisione) => describeEvento(decisione.evento))].join(
-        '\n',
-      ),
-    )
-  }
-
-  if (saltati.length > 0) {
-    sezioni.push(
-      [
-        '## Opere non catalogate (saltate)',
-        '',
-        ...saltati.map(
-          (decisione) =>
-            `- ${decisione.evento.teatro} — "${decisione.evento.opera}" il ${decisione.evento.data}: Opera non catalogata, Spettacolo non creato`,
-        ),
-      ].join('\n'),
-    )
-  }
+  const sezioni = [
+    renderSezione('## Nuovi Spettacoli', creazioni, (decisione) => describeEvento(decisione.evento)),
+    renderSezione('## Spettacoli aggiornati', aggiornamenti, (decisione) => describeEvento(decisione.evento)),
+    renderSezione(
+      '## Opere non catalogate (saltate)',
+      saltati,
+      (decisione) =>
+        `- ${decisione.evento.teatro} — "${decisione.evento.opera}" il ${decisione.evento.data}: Opera non catalogata, Spettacolo non creato`,
+    ),
+  ].filter(Boolean)
 
   return sezioni.join('\n\n')
 }
