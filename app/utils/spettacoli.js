@@ -26,3 +26,19 @@ export function spettacoliForOpera(list, operaSlug) {
 export function stripLocalePrefix(path) {
   return `/${path.split('/').slice(2).join('/')}`
 }
+
+export function groupSpettacoliByTarget(list) {
+  const groups = new Map()
+
+  for (const spettacolo of list) {
+    const { targetPath, targetLabel, ...occorrenza } = spettacolo
+
+    if (!groups.has(targetPath)) {
+      groups.set(targetPath, { targetPath, targetLabel, occorrenze: [] })
+    }
+
+    groups.get(targetPath).occorrenze.push(occorrenza)
+  }
+
+  return [...groups.values()]
+}
