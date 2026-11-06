@@ -4,6 +4,7 @@ export function useTheme() {
   if (import.meta.client) {
     onMounted(() => {
       theme.value = resolveTheme(localStorage.getItem(THEME_STORAGE_KEY))
+      document.documentElement.setAttribute('data-theme', theme.value)
     })
 
     watch(theme, (value) => {
