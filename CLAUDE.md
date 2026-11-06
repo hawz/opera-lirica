@@ -17,4 +17,4 @@ Single-context: `GLOSSARY.md` + `docs/adr/` alla radice del repo. Vedi `docs/age
 - **Test**: `npm run test` (Vitest)
 - **Lint**: `npm run lint` (ESLint via il modulo `@nuxt/eslint`, copre `.vue`/`.js`/`.ts`)
 
-Nessuna CI è configurata: lanciare entrambi i comandi a mano prima di ogni push.
+CI configurata (`.github/workflows/ci.yml`): entrambi i comandi girano automaticamente su ogni PR e su ogni push a `main`.
