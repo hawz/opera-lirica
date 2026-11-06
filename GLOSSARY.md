@@ -6,7 +6,7 @@ Enciclopedia pubblica delle opere liriche, organizzata per compositore, bilingue
 
 **Opera**:
 Un'opera lirica: il contenuto principale del sito, con titolo, anno, tagline, personaggi, atti, aria celebre e finale.
-_Avoid_: Spettacolo (riservato al significato di rappresentazione dal vivo in un teatro, vedi sezione Scope futuro), opera lirica per intero (ridondante, "Opera" basta nel contesto di questo progetto).
+_Avoid_: Spettacolo (riservato al significato di rappresentazione dal vivo in un teatro), opera lirica per intero (ridondante, "Opera" basta nel contesto di questo progetto).
 
 **Compositore**:
 L'autore di un'Opera. Ogni Opera appartiene a un solo Compositore; il sito raggruppa le Opere per Compositore.
@@ -35,10 +35,6 @@ _Avoid_: Lingua (Lingua è l'attributo umano; Locale è la collection tecnica di
 **Teatro**:
 Un luogo fisico dove si rappresentano Opere dal vivo. Per la v1 limitato a teatri in Italia; associato a una città/zona scelta dall'utente tra quelle coperte dal catalogo, non a una posizione geografica continua (nessun calcolo di distanza).
 _Avoid_: Sala, venue.
-
-## Scope futuro (non ancora implementato)
-
-Termini introdotti in sede di pianificazione per una fase successiva (programmazione spettacoli). Provvisori: da affinare quando questa fase verrà effettivamente progettata.
 
 **Palinsesto**:
 L'insieme degli Spettacoli futuri (non ancora andati in scena) programmati in un Teatro. Uno Spettacolo con data passata esce automaticamente dal Palinsesto pubblico.

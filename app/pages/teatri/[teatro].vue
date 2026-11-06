@@ -33,6 +33,16 @@
         {{ teatro.città }}
       </div>
       <TeatroDetails :teatro="teatro" />
+
+      <div
+        style="
+          margin-top: 2.5rem;
+          padding-top: 2rem;
+          border-top: 1px solid rgb(var(--color-accent) / 0.1);
+        "
+      >
+        <PalinsestoList :spettacoli="spettacoliInProgramma" />
+      </div>
     </div>
   </div>
 </template>
@@ -54,6 +64,38 @@ const { data: teatro } = await useAsyncData(
 if (!teatro.value) {
   throw createError({ statusCode: 404, statusMessage: "Teatro non trovato" });
 }
+
+const { data: spettacoli } = await useAsyncData(
+  `spettacoli-${locale.value}-${slug}`,
+  () => queryCollection(`spettacoli_${locale.value}`).all(),
+);
+
+const { data: opere } = await useAsyncData(`opere-${locale.value}`, () =>
+  queryCollection(locale.value).all(),
+);
+
+const opereBySlug = computed(() => {
+  const entries = (opere.value ?? [])
+    .filter((opera) => opera.compositore)
+    .map((opera) => [opera.path.split("/").pop(), opera]);
+  return Object.fromEntries(entries);
+});
+
+const spettacoliInProgramma = computed(() => {
+  const perQuestoTeatro = spettacoliForTeatro(spettacoli.value ?? [], slug);
+  const inProgramma = upcomingSpettacoli(perQuestoTeatro, new Date());
+
+  return inProgramma.map((spettacolo) => {
+    const opera = opereBySlug.value[spettacolo.opera];
+    return {
+      ...spettacolo,
+      operaTitle: opera?.title ?? spettacolo.opera,
+      operaPath: opera
+        ? `/${opera.path.split("/").slice(2).join("/")}`
+        : "/",
+    };
+  });
+});
 
 useSeoMeta({
   title: () =>

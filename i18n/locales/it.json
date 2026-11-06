@@ -28,5 +28,8 @@
   "teatri_choose_city": "Scegli una città per vedere i suoi teatri...",
   "teatro_website": "Sito del teatro",
   "seo_teatri_title": "I Teatri d'opera italiani — Opera Guide",
-  "seo_teatri_description": "Scopri i principali teatri d'opera italiani per città: indirizzo, descrizione e link al sito ufficiale."
+  "seo_teatri_description": "Scopri i principali teatri d'opera italiani per città: indirizzo, descrizione e link al sito ufficiale.",
+  "palinsesto_title": "Il Palinsesto",
+  "palinsesto_empty": "Nessuno spettacolo in programma al momento.",
+  "spettacolo_tickets": "Biglietti"
 }
