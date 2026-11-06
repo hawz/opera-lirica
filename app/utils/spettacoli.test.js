@@ -4,6 +4,7 @@ import {
   upcomingSpettacoli,
   spettacoliForTeatro,
   spettacoliForOpera,
+  stripLocalePrefix,
 } from './spettacoli'
 
 const today = new Date(2026, 10, 5)
@@ -66,5 +67,15 @@ describe('spettacoliForOpera', () => {
 
   it('returns an empty list when no spettacolo matches the opera', () => {
     expect(spettacoliForOpera([soon, later], 'la-boheme')).toEqual([])
+  })
+})
+
+describe('stripLocalePrefix', () => {
+  it('removes the locale segment from a Nuxt Content path', () => {
+    expect(stripLocalePrefix('/it/puccini/turandot')).toBe('/puccini/turandot')
+  })
+
+  it('works for a single-segment path, such as a teatro', () => {
+    expect(stripLocalePrefix('/it/teatri/scala')).toBe('/teatri/scala')
   })
 })

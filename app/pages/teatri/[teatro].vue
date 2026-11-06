@@ -90,9 +90,7 @@ const spettacoliInProgramma = computed(() => {
     return {
       ...spettacolo,
       targetLabel: opera?.title ?? spettacolo.opera,
-      targetPath: opera
-        ? `/${opera.path.split("/").slice(2).join("/")}`
-        : "/",
+      targetPath: opera ? stripLocalePrefix(opera.path) : "/",
     };
   });
 });

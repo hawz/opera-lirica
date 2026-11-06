@@ -22,3 +22,7 @@ export function spettacoliForTeatro(list, teatroSlug) {
 export function spettacoliForOpera(list, operaSlug) {
   return list.filter((spettacolo) => spettacolo.opera === operaSlug)
 }
+
+export function stripLocalePrefix(path) {
+  return `/${path.split('/').slice(2).join('/')}`
+}

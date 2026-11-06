@@ -141,9 +141,7 @@ const spettacoliInProgramma = computed(() => {
     return {
       ...spettacolo,
       targetLabel: teatro?.nome ?? spettacolo.teatro,
-      targetPath: teatro
-        ? `/${teatro.path.split("/").slice(2).join("/")}`
-        : "/",
+      targetPath: teatro ? stripLocalePrefix(teatro.path) : "/",
     };
   });
 });
