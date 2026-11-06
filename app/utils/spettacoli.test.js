@@ -82,15 +82,15 @@ describe('stripLocalePrefix', () => {
 })
 
 describe('groupSpettacoliByTarget', () => {
-  it('groups multiple occorrenze sharing the same targetPath into one group', () => {
-    const occorrenza1 = { data: '2026-12-07', targetPath: '/puccini/otello', targetLabel: 'Otello' }
-    const occorrenza2 = { data: '2026-12-10', targetPath: '/puccini/otello', targetLabel: 'Otello' }
+  it('groups multiple spettacoli sharing the same targetPath into one group', () => {
+    const spettacolo1 = { data: '2026-12-07', targetPath: '/puccini/otello', targetLabel: 'Otello' }
+    const spettacolo2 = { data: '2026-12-10', targetPath: '/puccini/otello', targetLabel: 'Otello' }
 
-    expect(groupSpettacoliByTarget([occorrenza1, occorrenza2])).toEqual([
+    expect(groupSpettacoliByTarget([spettacolo1, spettacolo2])).toEqual([
       {
         targetPath: '/puccini/otello',
         targetLabel: 'Otello',
-        occorrenze: [{ data: '2026-12-07' }, { data: '2026-12-10' }],
+        spettacoli: [{ data: '2026-12-07' }, { data: '2026-12-10' }],
       },
     ])
   })
@@ -100,16 +100,16 @@ describe('groupSpettacoliByTarget', () => {
     const boheme = { data: '2027-02-16', targetPath: '/puccini/la-boheme', targetLabel: 'La Bohème' }
 
     expect(groupSpettacoliByTarget([otello, boheme])).toEqual([
-      { targetPath: '/verdi/otello', targetLabel: 'Otello', occorrenze: [{ data: '2026-12-07' }] },
-      { targetPath: '/puccini/la-boheme', targetLabel: 'La Bohème', occorrenze: [{ data: '2027-02-16' }] },
+      { targetPath: '/verdi/otello', targetLabel: 'Otello', spettacoli: [{ data: '2026-12-07' }] },
+      { targetPath: '/puccini/la-boheme', targetLabel: 'La Bohème', spettacoli: [{ data: '2027-02-16' }] },
     ])
   })
 
-  it('returns a single-occorrenza group for a target with only one spettacolo', () => {
+  it('returns a single-spettacolo group for a target with only one spettacolo', () => {
     const turandot = { data: '2026-11-28', targetPath: '/puccini/turandot', targetLabel: 'Turandot' }
 
     expect(groupSpettacoliByTarget([turandot])).toEqual([
-      { targetPath: '/puccini/turandot', targetLabel: 'Turandot', occorrenze: [{ data: '2026-11-28' }] },
+      { targetPath: '/puccini/turandot', targetLabel: 'Turandot', spettacoli: [{ data: '2026-11-28' }] },
     ])
   })
 
@@ -125,6 +125,19 @@ describe('groupSpettacoliByTarget', () => {
     const gruppi = groupSpettacoliByTarget([otelloPrima, boheme, otelloSeconda])
 
     expect(gruppi.map((gruppo) => gruppo.targetPath)).toEqual(['/verdi/otello', '/puccini/la-boheme'])
-    expect(gruppi[0].occorrenze.map((occorrenza) => occorrenza.data)).toEqual(['2026-12-07', '2026-12-10'])
+    expect(gruppi[0].spettacoli.map((spettacolo) => spettacolo.data)).toEqual(['2026-12-07', '2026-12-10'])
+  })
+
+  it('usa data+ora per distinguere due recite nello stesso giorno (matinée/sera)', () => {
+    const matinee = { data: '2026-12-07', ora: '15:00', targetPath: '/verdi/otello', targetLabel: 'Otello' }
+    const sera = { data: '2026-12-07', ora: '20:00', targetPath: '/verdi/otello', targetLabel: 'Otello' }
+
+    const gruppi = groupSpettacoliByTarget([matinee, sera])
+
+    expect(gruppi).toHaveLength(1)
+    expect(gruppi[0].spettacoli).toEqual([
+      { data: '2026-12-07', ora: '15:00' },
+      { data: '2026-12-07', ora: '20:00' },
+    ])
   })
 })

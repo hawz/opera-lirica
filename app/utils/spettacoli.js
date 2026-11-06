@@ -31,13 +31,13 @@ export function groupSpettacoliByTarget(list) {
   const groups = new Map()
 
   for (const spettacolo of list) {
-    const { targetPath, targetLabel, ...occorrenza } = spettacolo
+    const { targetPath, targetLabel, ...resto } = spettacolo
 
     if (!groups.has(targetPath)) {
-      groups.set(targetPath, { targetPath, targetLabel, occorrenze: [] })
+      groups.set(targetPath, { targetPath, targetLabel, spettacoli: [] })
     }
 
-    groups.get(targetPath).occorrenze.push(occorrenza)
+    groups.get(targetPath).spettacoli.push(resto)
   }
 
   return [...groups.values()]

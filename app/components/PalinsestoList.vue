@@ -29,13 +29,13 @@
           {{ gruppo.targetLabel }}
         </NuxtLink>
         <ul style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.4rem">
-          <li v-for="occorrenza in gruppo.occorrenze" :key="occorrenza.data">
+          <li v-for="spettacolo in gruppo.spettacoli" :key="`${spettacolo.data}-${spettacolo.ora ?? ''}`">
             <p class="font-cormorant italic text-accent/70" style="font-size: 0.9rem">
-              {{ formattedDate(occorrenza) }}
+              {{ formattedDate(spettacolo) }}
             </p>
             <a
-              v-if="occorrenza.link_biglietti"
-              :href="occorrenza.link_biglietti"
+              v-if="spettacolo.link_biglietti"
+              :href="spettacolo.link_biglietti"
               target="_blank"
               rel="noopener noreferrer"
               class="inline-block font-cinzel text-xs text-accent/50 tracking-widest hover:text-accent transition-colors"
@@ -62,14 +62,14 @@ const localePath = useLocalePath();
 
 const gruppi = computed(() => groupSpettacoliByTarget(props.spettacoli));
 
-function formattedDate(occorrenza) {
-  const [year, month, day] = occorrenza.data.split("-").map(Number);
+function formattedDate(spettacolo) {
+  const [year, month, day] = spettacolo.data.split("-").map(Number);
   const date = new Date(year, month - 1, day);
   const formatted = date.toLocaleDateString(locale.value, {
     day: "2-digit",
     month: "long",
     year: "numeric",
   });
-  return occorrenza.ora ? `${formatted} · ${occorrenza.ora}` : formatted;
+  return spettacolo.ora ? `${formatted} · ${spettacolo.ora}` : formatted;
 }
 </script>
