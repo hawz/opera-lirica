@@ -1,5 +1,5 @@
 export const THEMES = ['sipario', 'palco-chiaro']
-export const DEFAULT_THEME = 'sipario'
+export const DEFAULT_THEME = 'palco-chiaro'
 export const THEME_STORAGE_KEY = 'opera-lirica-theme'
 
 export function resolveTheme(stored) {
