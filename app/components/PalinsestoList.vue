@@ -4,29 +4,29 @@
       class="font-cinzel text-xs text-accent/70 tracking-widest"
       style="letter-spacing: 0.2em; margin-bottom: 1rem"
     >
-      {{ $t("palinsesto_title") }}
+      {{ $t(titleKey) }}
     </h2>
 
     <p
       v-if="spettacoli.length === 0"
       class="font-cormorant italic text-text/50"
     >
-      {{ $t("palinsesto_empty") }}
+      {{ $t(emptyKey) }}
     </p>
 
     <ul v-else style="display: flex; flex-direction: column; gap: 1rem">
       <li
         v-for="spettacolo in spettacoli"
-        :key="`${spettacolo.data}-${spettacolo.opera}`"
+        :key="`${spettacolo.data}-${spettacolo.opera}-${spettacolo.teatro}`"
         class="border-t border-accent/10"
         style="padding-top: 1rem"
       >
         <NuxtLink
-          :to="localePath(spettacolo.operaPath)"
+          :to="localePath(spettacolo.targetPath)"
           class="font-playfair italic text-text hover:text-accent-light transition-colors"
           style="font-size: 1.1rem"
         >
-          {{ spettacolo.operaTitle }}
+          {{ spettacolo.targetLabel }}
         </NuxtLink>
         <p
           class="font-cormorant italic text-accent/70"
@@ -52,6 +52,8 @@
 <script setup>
 defineProps({
   spettacoli: { type: Array, required: true },
+  titleKey: { type: String, default: "palinsesto_title" },
+  emptyKey: { type: String, default: "palinsesto_empty" },
 });
 
 const { locale } = useI18n();

@@ -31,5 +31,7 @@
   "seo_teatri_description": "Discover the major Italian opera houses by city: address, description and a link to the official website.",
   "palinsesto_title": "Upcoming Performances",
   "palinsesto_empty": "No performances currently scheduled.",
-  "spettacolo_tickets": "Tickets"
+  "spettacolo_tickets": "Tickets",
+  "opera_spettacoli_title": "Upcoming Performances of This Opera",
+  "opera_spettacoli_empty": "No upcoming performances of this opera at the moment."
 }

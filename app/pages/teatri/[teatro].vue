@@ -89,10 +89,8 @@ const spettacoliInProgramma = computed(() => {
     const opera = opereBySlug.value[spettacolo.opera];
     return {
       ...spettacolo,
-      operaTitle: opera?.title ?? spettacolo.opera,
-      operaPath: opera
-        ? `/${opera.path.split("/").slice(2).join("/")}`
-        : "/",
+      targetLabel: opera?.title ?? spettacolo.opera,
+      targetPath: opera ? stripLocalePrefix(opera.path) : "/",
     };
   });
 });
